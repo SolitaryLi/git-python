@@ -42,7 +42,16 @@ dict = {
 data = bytes(parse.urlencode(dict), encoding="utf-8")
 req = request.Request(url= url, data= data, headers= headers, method="POST")
 response = request.urlopen(req)
-print(response.read().decode("utf-8"))
+#print(response.read().decode("utf-8"))
+
+
+#quote , unquote
+from urllib.parse import quote, unquote
+
+keyWord = "壁纸"
+url = "http://www.baidu.com/s?wd=" + quote(keyWord) #可以有效防止中文乱码，将中文字符转化为URL编码
+print(url)
+print(unquote(url))  #解码
 
 
 
